@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import supabase from "@/utils/supabaseClient";
-// font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import PortfolioModal from "../portfoliomodal";
 
 export default function Portfolio() {
   const [data, setData] = useState<any[]>([]);
@@ -23,6 +23,17 @@ export default function Portfolio() {
     setSelectedCategory(category);
   };
 
+  const handlePortfolioClick = (imageUrl: string) => {
+    const modalContainer = document.querySelector(".portfolio-modal-container");
+    const modalImg = document.querySelector("[data-portfolio-modal-img]") as HTMLImageElement;
+    const overlay = document.querySelector(".portfolio-modal-container .overlay");
+    
+    if (modalContainer && modalImg && overlay) {
+      modalImg.src = imageUrl;
+      modalContainer.classList.add("active");
+      overlay.classList.add("active");
+    }
+  };
   const filteredData = selectedCategory === "All" ? data : data.filter((portfolio_data) => portfolio_data.category === selectedCategory);
 
   return (
@@ -50,20 +61,22 @@ export default function Portfolio() {
         <ul className="project-list">
           {filteredData.map((portfolio_data, index) => (
             <li key={index} className="project-item active" data-filter-item data-category={portfolio_data.category}>
-              <a href="#">
+              <div onClick={() => handlePortfolioClick(portfolio_data.image)}>
                 <figure className="project-img">
                   <div className="project-item-icon-box">
-                    <FontAwesomeIcon icon={faEye }/>
+                    <FontAwesomeIcon icon={faEye} />
                   </div>
                   <img src={portfolio_data.image} alt={portfolio_data.title} loading="lazy"/>
                 </figure>
                 <h3 className="project-title">{portfolio_data.title}</h3>
                 <p className="project-category">{portfolio_data.category}</p>
-              </a>
+              </div>
             </li>
           ))}
         </ul>
       </section>
+
+      <PortfolioModal />
     </article>
   );
 }
