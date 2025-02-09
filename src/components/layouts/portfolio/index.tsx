@@ -95,6 +95,15 @@ export default function Portfolio() {
               Web development
             </button>
           </li>
+
+          <li className="filter-item">
+            <button
+              className={selectedCategory === "Certificate" ? "active" : ""}
+              onClick={() => handleCategoryChange("Certificate")}
+            >
+              Certificate
+            </button>
+          </li>
         </ul>
 
         <ul className="project-list">

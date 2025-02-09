@@ -1,11 +1,22 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import supabase from '@/utils/supabaseClient';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown,faEnvelope,faPhone,faCalendar,faLocationCrosshairs} from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import supabase from "@/utils/supabaseClient";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronDown,
+  faEnvelope,
+  faPhone,
+  faCalendar,
+  faLocationCrosshairs,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faGithub,
+  faInstagram,
+  faLinkedin,
+  faBehance,
+} from "@fortawesome/free-brands-svg-icons";
 
 export default function Sidebar() {
   const [data, setData] = useState<any[]>([]);
@@ -23,7 +34,7 @@ export default function Sidebar() {
   }, []);
 
   // Asumsi: data hanya memiliki satu baris, jika lebih, sesuaikan dengan kebutuhan
-  const personal = data[0]; 
+  const personal = data[0];
 
   return (
     <aside className="sidebar" data-sidebar>
@@ -54,12 +65,15 @@ export default function Sidebar() {
         <ul className="contacts-list">
           <li className="contact-item">
             <div className="icon-box">
-              <FontAwesomeIcon icon={faEnvelope}/>
+              <FontAwesomeIcon icon={faEnvelope} />
             </div>
 
             <div className="contact-info">
               <p className="contact-title">Email</p>
-              <a href={`mailto:${personal?.email || ""}`} className="contact-link">
+              <a
+                href={`mailto:${personal?.email || ""}`}
+                className="contact-link"
+              >
                 {personal?.email || "your-email@example.com"}
               </a>
             </div>
@@ -67,7 +81,7 @@ export default function Sidebar() {
 
           <li className="contact-item">
             <div className="icon-box">
-              <FontAwesomeIcon icon={faPhone}/>
+              <FontAwesomeIcon icon={faPhone} />
             </div>
 
             <div className="contact-info">
@@ -80,20 +94,22 @@ export default function Sidebar() {
 
           <li className="contact-item">
             <div className="icon-box">
-            <FontAwesomeIcon icon={faCalendar}/>
+              <FontAwesomeIcon icon={faCalendar} />
             </div>
 
             <div className="contact-info">
               <p className="contact-title">Birthday</p>
               <time dateTime={personal?.birthday || ""}>
-                {personal?.birthday ? new Date(personal.birthday).toLocaleDateString() : "YYYY-MM-DD"}
+                {personal?.birthday
+                  ? new Date(personal.birthday).toLocaleDateString()
+                  : "YYYY-MM-DD"}
               </time>
             </div>
           </li>
 
           <li className="contact-item">
             <div className="icon-box">
-            <FontAwesomeIcon icon={faLocationCrosshairs}/>
+              <FontAwesomeIcon icon={faLocationCrosshairs} />
             </div>
 
             <div className="contact-info">
@@ -107,20 +123,52 @@ export default function Sidebar() {
 
         <ul className="social-list">
           <li className="social-item">
-            <Link href="https://github.com/Sayyidusy" className="social-link" passHref>    
-            <FontAwesomeIcon icon={faGithub}/>
+            <Link
+              href="https://github.com/sayyidusy15"
+              className="social-link"
+              passHref
+            >
+              <FontAwesomeIcon icon={faGithub} />
             </Link>
           </li>
 
           <li className="social-item">
-            <Link href="https://www.linkedin.com/in/sayyidusy-alghiffari-858944219/" className="social-link" passHref>
-            <FontAwesomeIcon icon={faLinkedin}/>
+            <Link
+              href="https://github.com/Sayyidusy"
+              className="social-link"
+              passHref
+            >
+              <FontAwesomeIcon icon={faGithub} />
             </Link>
           </li>
 
           <li className="social-item">
-            <Link href="https://www.instagram.com/sanscoders/" className="social-link" passHref>
-            <FontAwesomeIcon icon={faInstagram}/>
+            <Link
+              href="https://www.linkedin.com/in/sayyidusy-alghiffari-858944219/"
+              className="social-link"
+              passHref
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </Link>
+          </li>
+
+          <li className="social-item">
+            <Link
+              href="https://www.instagram.com/sanscoders/"
+              className="social-link"
+              passHref
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </Link>
+          </li>
+
+          <li className="social-item">
+            <Link
+              href="https://www.behance.net/sanscoddevelop"
+              className="social-link"
+              passHref
+            >
+              <FontAwesomeIcon icon={faBehance} />
             </Link>
           </li>
         </ul>

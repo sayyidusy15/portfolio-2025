@@ -17,8 +17,10 @@ export default function Testimonials() {
 
   const handleTestimonialClick = (index: number) => {
     const modal = document.querySelectorAll(".modal-container")[index];
-    if (modal) {
+    const overlay = document.querySelectorAll(".overlay")[index];
+    if (modal && overlay) {
       modal.classList.add("active");
+      overlay.classList.add("active");
     }
   };
 

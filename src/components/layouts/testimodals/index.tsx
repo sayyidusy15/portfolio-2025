@@ -21,8 +21,10 @@ export default function Testimodals() {
 
   const closeModal = (index: number) => {
     const modal = document.querySelectorAll(".modal-container")[index];
-    if (modal) {
+    const overlay = document.querySelectorAll(".overlay")[index];
+    if (modal && overlay) {
       modal.classList.remove("active");
+      overlay.classList.remove("active");
     }
   };
 
@@ -42,7 +44,7 @@ export default function Testimodals() {
               data-modal-close-btn
               onClick={() => closeModal(index)}
             >
-              <FontAwesomeIcon icon= {faClose}/>
+              <FontAwesomeIcon icon={faClose}/>
             </button>
 
             <div className="modal-img-wrapper">
@@ -60,7 +62,6 @@ export default function Testimodals() {
 
             <div className="modal-content">
               <h4 className="h3 modal-title" data-modal-title>
-                {" "}
                 {testimonials_data?.testi_name || "Name"}
               </h4>
 
