@@ -4,7 +4,9 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 export default function PortfolioModal() {
   const closeModal = () => {
     const modalContainer = document.querySelector(".portfolio-modal-container");
-    const overlay = document.querySelector(".portfolio-modal-container .overlay");
+    const overlay = document.querySelector(
+      ".portfolio-modal-container .overlay"
+    );
     if (modalContainer && overlay) {
       modalContainer.classList.remove("active");
       overlay.classList.remove("active");
@@ -13,11 +15,7 @@ export default function PortfolioModal() {
 
   return (
     <div className="portfolio-modal-container" data-portfolio-modal>
-      <div
-        className="overlay"
-        data-overlay
-        onClick={closeModal}
-      ></div>
+      <div className="overlay" data-overlay onClick={closeModal}></div>
 
       <section className="portfolio-modal">
         <button
@@ -28,13 +26,18 @@ export default function PortfolioModal() {
           <FontAwesomeIcon icon={faClose} />
         </button>
 
-        <div className="modal-img-wrapper">
-          <img
-            src=""
-            alt="Portfolio image"
-            className="modal-img"
-            data-portfolio-modal-img
-          />
+        <div className="modal-content">
+          <p className="modal-category" data-portfolio-modal-category></p>
+          <h3 className="modal-title" data-portfolio-modal-title></h3>
+
+          <div className="modal-img-wrapper">
+            <img
+              src=""
+              alt="Portfolio image"
+              className="modal-img"
+              data-portfolio-modal-img
+            />
+          </div>
         </div>
       </section>
     </div>

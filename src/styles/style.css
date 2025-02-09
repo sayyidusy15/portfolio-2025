@@ -1753,6 +1753,30 @@ textarea.form-input::-webkit-resizer { display: none; }
   opacity: 1;
 }
 
+.portfolio-modal .modal-content {
+  padding: 15px 0;
+}
+
+.portfolio-modal .modal-title {
+  color: var(--white-2);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-600);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.portfolio-modal .modal-category {
+  color: var(--light-gray-70);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.portfolio-modal .modal-img-wrapper {
+  margin-top: 15px;
+}
+
 /* FOOTER */
 
 .footer {
